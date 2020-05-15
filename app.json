@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TestProjectRN",
-    "slug": "TestProjectRN",
+    "name": "RN-Project",
+    "slug": "RN-Project",
     "platforms": [
       "ios",
       "android",
