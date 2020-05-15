@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, FlatList, StyleSheet } from 'react-native';
 import PalettePreview from '../components/PalettePreview';
+import { blue } from 'ansi-colors';
 
 const SOLARIZED = [
     { colorName: 'Base03', hexCode: '#002b36' },
@@ -46,7 +47,10 @@ const COLORPALETTES = [
 const Home = ({ navigation }) => {
     return (
         <View style={styles.background}>
-            <Text style={styles.text}>Find your perfect color!</Text>
+            <TouchableOpacity style={styles.smallButton} onPress={() => { navigation.push('Counter') }}>
+                <Text style={styles.smallText}>Test out the new Counter!</Text>
+            </TouchableOpacity>
+            <Text style={styles.text}>Find your perfect color</Text>
             <FlatList
                 data={COLORPALETTES}
                 keyExtractor={item => item.paletteName}
@@ -57,11 +61,27 @@ const Home = ({ navigation }) => {
                     </PalettePreview>
                 )}
             />
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    smallButton: {
+        width: 100,
+        marginVertical: 16,
+        marginHorizontal: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        elevation: 2,
+        alignItems: 'center',
+
+    },
+    smallText: {
+        fontStyle: 'italic',
+    },
     background: {
         backgroundColor: 'white',
         flex: 1
