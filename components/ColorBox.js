@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const ColorBox = ({ colorName, hexCode }) => {
     const boxColor = {
@@ -10,21 +10,22 @@ const ColorBox = ({ colorName, hexCode }) => {
     }
 
     return (
-        <TouchableOpacity style={[styles.buttonStyle, boxColor]}>
+        <View style={[styles.buttonStyle, boxColor]}>
             <Text style={fontColor}>
                 {colorName}: {hexCode}
             </Text>
-        </TouchableOpacity>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     buttonStyle: {
-        marginHorizontal: 10,
-        marginVertical: 4,
-        paddingHorizontal: 10,
-        width: 360,
-        height: 30,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        elevation: 2, marginVertical: 4,
+        height: 40,
         alignItems: 'center',
         justifyContent: 'center',
     },
