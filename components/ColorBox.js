@@ -1,13 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const ColorBox = ({ colorName, hexCode, textColor }) => {
+const ColorBox = ({ colorName, hexCode }) => {
     const boxColor = {
         backgroundColor: hexCode,
     }
     const fontColor = {
-        color: textColor,
+        color: parseInt(hexCode.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white'
     }
+
     return (
         <TouchableOpacity style={[styles.buttonStyle, boxColor]}>
             <Text style={fontColor}>
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginVertical: 4,
         paddingHorizontal: 10,
-        width: 300,
+        width: 360,
         height: 30,
         alignItems: 'center',
         justifyContent: 'center',
