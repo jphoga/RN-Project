@@ -1,56 +1,42 @@
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, FlatList } from 'react-native';
+import ColorBox from './components/ColorBox';
+
+const COLORS = [
+  { colorName: 'Base03', hexCode: '#002b36', textColor: 'white' },
+  { colorName: 'Base02', hexCode: '#073642', textColor: 'white' },
+  { colorName: 'Base01', hexCode: '#586e75', textColor: 'white' },
+  { colorName: 'Base00', hexCode: '#657b83', textColor: 'white' },
+  { colorName: 'Base0', hexCode: '#839496', textColor: 'white' },
+  { colorName: 'Base1', hexCode: '#93a1a1', textColor: 'white' },
+  { colorName: 'Base2', hexCode: '#eee8d5', textColor: 'black' },
+  { colorName: 'Base3', hexCode: '#fdf6e3', textColor: 'black' },
+  { colorName: 'Yellow', hexCode: '#b58900', textColor: 'white' },
+  { colorName: 'Orange', hexCode: '#cb4b16', textColor: 'white' },
+  { colorName: 'Red', hexCode: '#dc322f', textColor: 'white' },
+  { colorName: 'Magenta', hexCode: '#d33682', textColor: 'white' },
+  { colorName: 'Violet', hexCode: '#6c71c4', textColor: 'white' },
+  { colorName: 'Blue', hexCode: '#268bd2', textColor: 'white' },
+  { colorName: 'Cyan', hexCode: '#2aa198', textColor: 'white' },
+  { colorName: 'Green', hexCode: '#859900', textColor: 'white' },
+];
 
 const App = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={[styles.container]}>
         <Text style={styles.fat}>Here are some boxes of different colors</Text>
-        <TouchableOpacity style={[styles.buttonStyle, styles.cyan]}>
-          <Text style={styles.white}>Cyan: #2aa198</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.buttonStyle, styles.blue]}>
-          <Text style={styles.white}>Blue: #268bd2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.buttonStyle, styles.magenta]}>
-          <Text style={styles.white}>Magenta: #d33682</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.buttonStyle, styles.orange]}>
-          <Text style={styles.white}>Orange: #cb4b16</Text>
-        </TouchableOpacity>
+        <FlatList
+          data={COLORS}
+          keyExtractor={item => item}
+          renderItem={({ item }) => <ColorBox colorName={item.colorName} hexCode={item.hexCode} textColor={item.textColor} />}
+        />
       </View >
     </SafeAreaView >
   )
 };
 
 const styles = StyleSheet.create({
-  white: {
-    color: 'white',
-  },
-  buttonStyle: {
-    marginHorizontal: 10,
-    marginVertical: 4,
-    paddingHorizontal: 10,
-    width: 300,
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cyan: {
-    backgroundColor: '#2aa198',
-  },
-  blue: {
-    backgroundColor: '#268bd2',
-  },
-  magenta: {
-    backgroundColor: '#d33682',
-  },
-  orange: {
-    backgroundColor: '#cb4b16',
-  },
-  fat: {
-    fontWeight: 'bold',
-  },
   container: {
     marginTop: 10,
     alignItems: 'center',
