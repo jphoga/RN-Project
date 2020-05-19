@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 
 const Counter = () => {
 
     const [count, setCount] = useState(0);
+
+    const handleIncrement = useCallback(() => {
+        setCount(current => current + 1);
+    }, []);
+
+    const handleDecrement = useCallback(() => {
+        setCount(current => current - 1);
+    }, []);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -14,13 +22,13 @@ const Counter = () => {
             </View>
             <View style={styles.innerContainer}>
                 <TouchableOpacity style={styles.button}
-                    onPress={() => { setCount(currentValue => currentValue + 1) }}>
+                    onPress={handleIncrement}>
                     <Text style={styles.text}>
                         Increment
                 </Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button}
-                    onPress={() => { setCount(currentValue => currentValue - 1) }}>
+                    onPress={handleDecrement}>
                     <Text style={styles.text}>
                         Decrement
                 </Text>
